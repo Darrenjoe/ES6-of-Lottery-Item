@@ -38,5 +38,6 @@ gulp.task('scripts', () => {
     }))
     .pipe(uglify({compress: {properties: false}, output: {'quote_keys': true}}))
     .pipe(gulp.dest('server/publick/js'))
+    .pipe(gulpif(args.watch, livereload()))
 })
 

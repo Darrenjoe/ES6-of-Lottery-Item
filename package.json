@@ -18,5 +18,19 @@
   "homepage": "https://github.com/Darrenjoe/ES6-of-Lottery-Item#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-livereload": "^4.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^4.30.0",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^13.2.2"
   }
 }

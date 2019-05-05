@@ -1,0 +1,22 @@
+{
+  "name": "lotteryitem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darrenjoe/ES6-of-Lottery-Item.git"
+  },
+  "author": "Darren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darrenjoe/ES6-of-Lottery-Item/issues"
+  },
+  "homepage": "https://github.com/Darrenjoe/ES6-of-Lottery-Item#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

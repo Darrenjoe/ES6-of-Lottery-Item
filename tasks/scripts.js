@@ -11,7 +11,7 @@ import gulify from "gulp-uglify";
 import { log, colors } from "gulp-util";
 import args from "./util/args";
 
-gulp.task('scripts', () => {
+gulp.task('scripts', gulp.series(() => {
   return gulp.src(['app/js/index/js'])
     .pipe(plumber({
       errorHandler: function() {
@@ -39,5 +39,5 @@ gulp.task('scripts', () => {
     .pipe(uglify({compress: {properties: false}, output: {'quote_keys': true}}))
     .pipe(gulp.dest('server/publick/js'))
     .pipe(gulpif(args.watch, livereload()))
-})
+}));
 

@@ -1,3 +1,3 @@
 import gulp from "gulp";
 
-gulp.task('default', gulp.series('build'));
+gulp.task('default', ['build']);

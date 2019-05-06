@@ -3,19 +3,19 @@ import yargs from "yargs";
 const args = yargs
   .option('production', {
     boolean: true,
-    defalut: false,
+    default: false,
     describe: 'min all scripts'
   })
 
   .option('watch', {
     boolean: true,
-    defalut: false,
+    default: false,
     describe: 'watch all files'
   })
 
   .option('verbose', {
     boolean: true,
-    defalut: false,
+    default: false,
     describe: 'log'
   })
 
@@ -25,8 +25,10 @@ const args = yargs
 
   .option('port', {
     string: true,
-    defalut: 8080,
+    default: 8080,
     describe: 'server port'
   })
 
   .argv
+
+export default args;

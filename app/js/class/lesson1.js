@@ -3,4 +3,13 @@ function test() {
   console.log(a);
 }
 
-test();
+function last() {
+  const PI = 3.1415967;
+  const obj = {
+    a: 1
+  }
+  obj.a = 3;
+  console.log(PI, obj);
+}
+
+last();

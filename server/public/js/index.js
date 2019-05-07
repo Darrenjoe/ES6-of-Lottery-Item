@@ -55,30 +55,52 @@
 
 	__webpack_require__(2);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Test = function Test() {
-	  _classCallCheck(this, Test);
-
-	  this.a = "hello world";
-	};
-
-	var test = new Test();
-
-	document.body.innerText = test.a;
-
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
 	"use strict";
 
-	function test() {
-	  var a = 1;
-	  console.log(a);
-	}
+	{
+	  var a = void 0,
+	      b = void 0,
+	      reset = void 0;
+	  a = 1;
+	  b = 2;
 
-	test();
+	  console.log(a, b);
+	}
+	{
+	  var _a = void 0,
+	      _b = void 0,
+	      _reset = void 0;
+	  _a = 1;
+	  _b = 2;
+	  _reset = [3, 4, 5, 6];
+
+	  console.log(_a, _b, _reset);
+	}
+	{
+	  var _a2 = void 0,
+	      _b2 = void 0;
+	  var _a$b = { a: 1, b: 2 };
+	  _a2 = _a$b.a;
+	  _b2 = _a$b.b;
+
+	  console.log(_a2, _b2);
+	}
+	{
+	  var _a3 = void 0,
+	      _b3 = void 0,
+	      c = void 0;
+	  var _ref = [1, 2];
+	  _a3 = _ref[0];
+	  _b3 = _ref[1];
+	  var _ref$ = _ref[2];
+	  c = _ref$ === undefined ? 3 : _ref$;
+
+	  console.log(_a3, _b3, c);
+	}
 
 /***/ })
 /******/ ]);

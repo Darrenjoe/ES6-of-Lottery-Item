@@ -77,6 +77,17 @@
 	  var a2 = new RegExp('b+', 'y');
 	  console.log('one', a1.exec(s), a2.exec(s));
 	  console.log('two', a1.exec(s), a2.exec(s));
+
+	  console.log('two', a1.sticky, a2.sticky);
+	}
+	{
+	  console.log('u-1', /^\uD83D/.test('\uD83D\uDC2A'));
+	  console.log('u-2', /^(?:\uD83D(?![\uDC00-\uDFFF]))/.test('\uD83D\uDC2A'));
+
+	  console.log(/\u{61}/.test('a'));
+	  console.log(/a/.test('a'));
+	  console.log('\uD842\uDFB7');
+	  // . 可以匹配两个字节长度一下的所有字节 u可全匹配
 	}
 
 /***/ })

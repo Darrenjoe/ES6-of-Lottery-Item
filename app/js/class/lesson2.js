@@ -10,7 +10,7 @@
 }
 {
   let a, b;
-  ({a, b} = {a: 1, b: 2});
+  ({ a, b } = { a: 1, b: 2 });
   console.log(a, b);
 }
 {
@@ -33,4 +33,27 @@
   let a, b, c;
   [a, ...b] = f();
   console.log(a, b);
+}
+{
+  let o = {
+    p: 42,
+    q: true
+  }
+  let { p, q } = o;
+  console.log(p, q);
+}
+{
+  let { p = 42, q = 5 } = { p: 3 };
+  console.log(p, q);
+}
+{
+  let metaData = {
+    title: 'abc',
+    test: [{
+      title: 'test',
+      desc: 'descripts'
+    }]
+  }
+  let { title: esTitle, test: [{ title: cnTitle }] } = metaData;
+  console.log(esTitle, cnTitle);
 }

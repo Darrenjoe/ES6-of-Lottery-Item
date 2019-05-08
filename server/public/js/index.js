@@ -59,86 +59,24 @@
 /* 2 */
 /***/ (function(module, exports) {
 
-	"use strict";
-
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-	function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+	'use strict';
 
 	{
-	  var a = void 0,
-	      b = void 0,
-	      reset = void 0;
-	  a = 1;
-	  b = 2;
+	  var regex = new RegExp('xyz', 'i'); // es5写法
+	  var regex2 = new RegExp(/xyz/i); // esd5写法2
 
-	  console.log(a, b);
+	  console.log(regex.test('xyz123'), regex2.test('xyz123'));
+
+	  var regex3 = new RegExp(/xyz/ig, 'i'); // es6写法
+
+	  console.log(regex3.flags);
 	}
 	{
-	  var _a = void 0,
-	      _b = void 0,
-	      _reset = void 0;
-	  _a = 1;
-	  _b = 2;
-	  _reset = [3, 4, 5, 6];
-
-	  console.log(_a, _b, _reset);
-	}
-	{
-	  var _a2 = void 0,
-	      _b2 = void 0;
-	  var _a$b = { a: 1, b: 2 };
-	  _a2 = _a$b.a;
-	  _b2 = _a$b.b;
-
-	  console.log(_a2, _b2);
-	}
-	{
-	  var _a3 = void 0,
-	      _b3 = void 0,
-	      c = void 0;
-	  var _ref = [1, 2];
-	  _a3 = _ref[0];
-	  _b3 = _ref[1];
-	  var _ref$ = _ref[2];
-	  c = _ref$ === undefined ? 3 : _ref$;
-
-	  console.log(_a3, _b3, c);
-	}
-	{
-	  var f = function f() {
-	    return [1, 2];
-	  };
-
-	  var _a4 = void 0,
-	      _b4 = void 0;
-
-	  var _f = f();
-
-	  var _f2 = _slicedToArray(_f, 2);
-
-	  _a4 = _f2[0];
-	  _b4 = _f2[1];
-
-	  console.log(_a4, _b4);
-	}
-	{
-	  var _f3 = function _f3() {
-	    return [1, 2, 3, 4, 5];
-	  };
-
-	  var _a5 = void 0,
-	      _b5 = void 0,
-	      _c = void 0;
-
-	  var _f4 = _f3();
-
-	  var _f5 = _toArray(_f4);
-
-	  _a5 = _f5[0];
-	  _b5 = _f5.slice(1);
-
-	  console.log(_a5, _b5);
+	  var s = 'bbb_bb_b';
+	  var a1 = /b+/g;
+	  var a2 = new RegExp('b+', 'y');
+	  console.log('one', a1.exec(s), a2.exec(s));
+	  console.log('two', a1.exec(s), a2.exec(s));
 	}
 
 /***/ })

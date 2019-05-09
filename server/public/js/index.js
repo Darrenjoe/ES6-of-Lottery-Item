@@ -62,32 +62,18 @@
 	'use strict';
 
 	{
-	  var regex = new RegExp('xyz', 'i'); // es5写法
-	  var regex2 = new RegExp(/xyz/i); // esd5写法2
-
-	  console.log(regex.test('xyz123'), regex2.test('xyz123'));
-
-	  var regex3 = new RegExp(/xyz/ig, 'i'); // es6写法
-
-	  console.log(regex3.flags);
+	  console.log('a', 'a');
+	  console.log('s', '\u20BB7');
+	  console.log('s', '\uD842\uDFB7');
 	}
-	{
-	  var s = 'bbb_bb_b';
-	  var a1 = /b+/g;
-	  var a2 = new RegExp('b+', 'y');
-	  console.log('one', a1.exec(s), a2.exec(s));
-	  console.log('two', a1.exec(s), a2.exec(s));
 
-	  console.log('two', a1.sticky, a2.sticky);
-	}
 	{
-	  console.log('u-1', /^\uD83D/.test('\uD83D\uDC2A'));
-	  console.log('u-2', /^(?:\uD83D(?![\uDC00-\uDFFF]))/.test('\uD83D\uDC2A'));
-
-	  console.log(/\u{61}/.test('a'));
-	  console.log(/a/.test('a'));
-	  console.log('\uD842\uDFB7');
-	  // . 可以匹配两个字节长度一下的所有字节 u可全匹配
+	  var s = '𠮷';
+	  console.log('length', s.length);
+	  console.log('0', s.charAt(0));
+	  console.log('1', s.charAt(1));
+	  console.log('at0', s.charCodeAt(0));
+	  console.log('at0', s.charCodeAt(1));
 	}
 
 /***/ })

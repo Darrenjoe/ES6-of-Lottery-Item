@@ -9615,97 +9615,228 @@
 
 /***/ }),
 /* 334 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+	var _vm = __webpack_require__(335);
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	{
-	  var test = function test(x) {
-	    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'world';
+	  // 声明
+	  var a1 = Symbol();
+	  var a2 = Symbol();
+	  console.log(a1 === a2);
 
-	    console.log('默认值', x, y);
-	  };
-
-	  test('hello');
-	  test('hello', 'kill');
+	  var a3 = Symbol.for('a3');
+	  var a4 = Symbol.for('a3');
+	  console.log(a3 === a4);
 	}
 
 	{
-	  var test2 = function test2(x) {
-	    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+	  var _obj;
 
-	    console.log('作用域', x, y);
-	  };
+	  var _a = Symbol.for('abc');
+	  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
+	  console.log('obj', obj);
 
-	  var x = 'test';
+	  var _iteratorNormalCompletion = true;
+	  var _didIteratorError = false;
+	  var _iteratorError = undefined;
 
-	  test2('kill');
-	}
+	  try {
+	    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	      var _step$value = _slicedToArray(_step.value, 2),
+	          key = _step$value[0],
+	          value = _step$value[1];
 
-	{
-	  var test3 = function test3() {
-	    for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
-	      arg[_key] = arguments[_key];
+	      console.log('let of', key, value);
 	    }
-
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
+	  } catch (err) {
+	    _didIteratorError = true;
+	    _iteratorError = err;
+	  } finally {
 	    try {
-	      for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var v = _step.value;
-
-	        console.log('rest', v);
+	      if (!_iteratorNormalCompletion && _iterator.return) {
+	        _iterator.return();
 	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
 	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
+	      if (_didIteratorError) {
+	        throw _iteratorError;
 	      }
 	    }
-	  };
+	  }
 
-	  test3(1, 2, 3, 4, 'a');
+	  Object.getOwnPropertySymbols(obj).forEach(function (item) {
+	    console.log(obj[item]);
+	  });
+
+	  Reflect.ownKeys(obj).forEach(function (item) {
+	    console.log('ownKeys', item, obj[item]);
+	  });
 	}
 
-	{
-	  var _console, _console2;
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	  (_console = console).log.apply(_console, [1, 2, 4]);
-	  (_console2 = console).log.apply(_console2, ['a'].concat([1, 2, 4]));
-	}
+	'use strict';
 
-	{
-	  var arrow = function arrow(v) {
-	    return v * 2;
-	  };
-	  var arrow2 = function arrow2() {
-	    return 5;
-	  };
-	  console.log('arrow', arrow(3));
-	  console.log(arrow2());
-	}
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	{
-	  var tail = function tail(x) {
-	    console.log('tail', x);
-	  };
+	var indexOf = __webpack_require__(336);
 
-	  var fx = function fx(x) {
-	    return tail(x);
-	  };
+	var Object_keys = function Object_keys(obj) {
+	    if (Object.keys) return Object.keys(obj);else {
+	        var res = [];
+	        for (var key in obj) {
+	            res.push(key);
+	        }return res;
+	    }
+	};
 
-	  fx(123);
-	}
+	var forEach = function forEach(xs, fn) {
+	    if (xs.forEach) return xs.forEach(fn);else for (var i = 0; i < xs.length; i++) {
+	        fn(xs[i], i, xs);
+	    }
+	};
+
+	var defineProp = function () {
+	    try {
+	        Object.defineProperty({}, '_', {});
+	        return function (obj, name, value) {
+	            Object.defineProperty(obj, name, {
+	                writable: true,
+	                enumerable: false,
+	                configurable: true,
+	                value: value
+	            });
+	        };
+	    } catch (e) {
+	        return function (obj, name, value) {
+	            obj[name] = value;
+	        };
+	    }
+	}();
+
+	var globals = ['Array', 'Boolean', 'Date', 'Error', 'EvalError', 'Function', 'Infinity', 'JSON', 'Math', 'NaN', 'Number', 'Object', 'RangeError', 'ReferenceError', 'RegExp', 'String', 'SyntaxError', 'TypeError', 'URIError', 'decodeURI', 'decodeURIComponent', 'encodeURI', 'encodeURIComponent', 'escape', 'eval', 'isFinite', 'isNaN', 'parseFloat', 'parseInt', 'undefined', 'unescape'];
+
+	function Context() {}
+	Context.prototype = {};
+
+	var Script = exports.Script = function NodeScript(code) {
+	    if (!(this instanceof Script)) return new Script(code);
+	    this.code = code;
+	};
+
+	Script.prototype.runInContext = function (context) {
+	    if (!(context instanceof Context)) {
+	        throw new TypeError("needs a 'context' argument.");
+	    }
+
+	    var iframe = document.createElement('iframe');
+	    if (!iframe.style) iframe.style = {};
+	    iframe.style.display = 'none';
+
+	    document.body.appendChild(iframe);
+
+	    var win = iframe.contentWindow;
+	    var wEval = win.eval,
+	        wExecScript = win.execScript;
+
+	    if (!wEval && wExecScript) {
+	        // win.eval() magically appears when this is called in IE:
+	        wExecScript.call(win, 'null');
+	        wEval = win.eval;
+	    }
+
+	    forEach(Object_keys(context), function (key) {
+	        win[key] = context[key];
+	    });
+	    forEach(globals, function (key) {
+	        if (context[key]) {
+	            win[key] = context[key];
+	        }
+	    });
+
+	    var winKeys = Object_keys(win);
+
+	    var res = wEval.call(win, this.code);
+
+	    forEach(Object_keys(win), function (key) {
+	        // Avoid copying circular objects like `top` and `window` by only
+	        // updating existing context properties or new properties in the `win`
+	        // that was only introduced after the eval.
+	        if (key in context || indexOf(winKeys, key) === -1) {
+	            context[key] = win[key];
+	        }
+	    });
+
+	    forEach(globals, function (key) {
+	        if (!(key in context)) {
+	            defineProp(context, key, win[key]);
+	        }
+	    });
+
+	    document.body.removeChild(iframe);
+
+	    return res;
+	};
+
+	Script.prototype.runInThisContext = function () {
+	    return eval(this.code); // maybe...
+	};
+
+	Script.prototype.runInNewContext = function (context) {
+	    var ctx = Script.createContext(context);
+	    var res = this.runInContext(ctx);
+
+	    forEach(Object_keys(ctx), function (key) {
+	        context[key] = ctx[key];
+	    });
+
+	    return res;
+	};
+
+	forEach(Object_keys(Script.prototype), function (name) {
+	    exports[name] = Script[name] = function (code) {
+	        var s = Script(code);
+	        return s[name].apply(s, [].slice.call(arguments, 1));
+	    };
+	});
+
+	exports.createScript = function (code) {
+	    return exports.Script(code);
+	};
+
+	exports.createContext = Script.createContext = function (context) {
+	    var copy = new Context();
+	    if ((typeof context === 'undefined' ? 'undefined' : _typeof(context)) === 'object') {
+	        forEach(Object_keys(context), function (key) {
+	            copy[key] = context[key];
+	        });
+	    }
+	    return copy;
+	};
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	var indexOf = [].indexOf;
+
+	module.exports = function (arr, obj) {
+	  if (indexOf) return arr.indexOf(obj);
+	  for (var i = 0; i < arr.length; ++i) {
+	    if (arr[i] === obj) return i;
+	  }
+	  return -1;
+	};
 
 /***/ })
 /******/ ]);

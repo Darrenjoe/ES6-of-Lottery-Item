@@ -9,4 +9,5 @@ import 'babel-polyfill';
 // import "./class/lesson8.js";
 // import "./class/lesson9.js";
 // import "./class/lesson10.js";
-import "./class/lesson11.js";
+// import "./class/lesson11.js";
+import "./class/lesson12.js";

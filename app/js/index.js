@@ -10,4 +10,5 @@ import 'babel-polyfill';
 // import "./class/lesson9.js";
 // import "./class/lesson10.js";
 // import "./class/lesson11.js";
-import "./class/lesson12.js";
+// import "./class/lesson12.js";
+import "./class/lesson13.js";

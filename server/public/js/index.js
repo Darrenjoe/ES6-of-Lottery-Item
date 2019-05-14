@@ -9617,7 +9617,12 @@
 /* 334 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
+
+	{
+	  var arr = ['hello', 'world'];
+	  var map = arr[Symbol.iterator]();
+	}
 
 /***/ })
 /******/ ]);

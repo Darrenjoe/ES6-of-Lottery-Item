@@ -13,4 +13,5 @@ import 'babel-polyfill';
 // import "./class/lesson12.js";
 // import "./class/lesson13.js";
 // import "./class/lesson14.js";
-import "./class/lesson15.js";
+// import "./class/lesson15.js";
+import "./class/lesson16.js";

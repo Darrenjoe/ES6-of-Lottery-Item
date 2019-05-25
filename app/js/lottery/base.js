@@ -78,4 +78,16 @@ class Base {
     }
     self.updateOpenCode && self.updateOpenCode.call(self, code);
   }
+
+  /**
+   * [toggleCodeActive 号码选中取消]
+   * @param  {[type]} e [description]
+   * @return {[type]}   [description]
+   */
+  toggleCodeActive(e){
+    let self=this;
+    let $cur=$(e.currentTarget);
+    $cur.toggleClass('btn-boll-active');
+    self.getCount();
+  }
 }

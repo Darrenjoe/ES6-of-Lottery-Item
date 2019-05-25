@@ -9784,6 +9784,21 @@
 
 	      self.updateOpenCode && self.updateOpenCode.call(self, code);
 	    }
+
+	    /**
+	     * [toggleCodeActive 号码选中取消]
+	     * @param  {[type]} e [description]
+	     * @return {[type]}   [description]
+	     */
+
+	  }, {
+	    key: 'toggleCodeActive',
+	    value: function toggleCodeActive(e) {
+	      var self = this;
+	      var $cur = (0, _jquery2.default)(e.currentTarget);
+	      $cur.toggleClass('btn-boll-active');
+	      self.getCount();
+	    }
 	  }]);
 
 	  return Base;

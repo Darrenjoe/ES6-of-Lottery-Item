@@ -90,4 +90,79 @@ class Base {
     $cur.toggleClass('btn-boll-active');
     self.getCount();
   }
+
+  /**
+   * [changePlayNav 切换玩法]
+   * @param  {[type]} e [description]
+   * @return {[type]}   [description]
+   */
+  changePlayNav(e) {
+    let self = this;
+    let $cur = $(e.currentTarget);
+    $cur.addClass('active').siblings().removeClass('active');
+    self.cur_play = $cur.attr('desc').toLocaleLowerCase();
+    $('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
+    $('.boll-list .btn-boll').removeClass('btn-boll-active');
+    self.getCount();
+  }
+
+  /**
+   * [assistHandle 操作区]
+   * @param  {[type]} e [description]
+   * @return {[type]}   [description]
+   */
+  assistHandle(e) {
+    e.preventDefault();
+    let self = this;
+    let $cur = $(e.currentTarget);
+    let index = $cur.index();
+    $('.boll-list .byn-boll').removeClass('btn-boll-active');
+    if (index === 0) {
+      $('.boll-list .byn-boll').addClass('btn-boll-active');
+    }
+    if (index === 1) {
+      $('.boll-list .byn-boll').each(function(i ,t) {
+        if (t.textContent - 5 > 0) {
+          $(t).addClass('btn-boll-active');
+        }
+      });
+    }
+    if (index === 2) {
+      $('.boll-list .byn-boll').each(function(i ,t) {
+        if (t.textContent - 6 < 0) {
+          $(t).addClass('btn-boll-active');
+        }
+      });
+    }
+    if (index === 3) {
+      $('.boll-list .byn-boll').each(function(i ,t) {
+        if (t.textContent % 2 === 1) {
+          $(t).addClass('btn-boll-active');
+        }
+      });
+    }
+    if (index === 4) {
+      $('.boll-list .byn-boll').each(function(i ,t) {
+        if (t.textContent % 2 === 0) {
+          $(t).addClass('btn-boll-active');
+        }
+      });
+    }
+    self.getCount();
+  }
+
+  /**
+   * [getName 获取当前彩票名称]
+   * @return {[type]} [description]
+   */
+  getName(){
+    return this.name
+  }
+
+  /**
+   * [addCode 添加号码]
+   */
+  addCode() {
+    
+  }
 }

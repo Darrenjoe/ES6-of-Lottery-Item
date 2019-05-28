@@ -9623,6 +9623,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	__webpack_require__(2);
@@ -9730,7 +9734,7 @@
 	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'syy';
 	    var cname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '11选5';
 	    var issue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '**';
-	    var state = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+	    var state = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '**';
 
 	    _classCallCheck(this, Lottery);
 
@@ -9752,12 +9756,18 @@
 	    _this.cart_el = '.codelist';
 	    _this.omit_el = '';
 	    _this.cur_play = 'r5';
-	    _this.initPlayLiist();
+	    _this.initPlayList();
 	    _this.initNumber();
 	    _this.updateState();
 	    _this.initEvent();
 	    return _this;
 	  }
+
+	  /**
+	   * [updateState 状态更新]
+	   * @return {[type]} [description]
+	   */
+
 
 	  _createClass(Lottery, [{
 	    key: 'updateState',
@@ -9765,17 +9775,42 @@
 	      var self = this;
 	      this.getState().then(function (res) {
 	        self.issue = res.issue;
-	        self.end_timer = res.end_timer;
-	        self.state = res.states;
+	        self.end_time = res.end_time;
+	        self.state = res.state;
+	        (0, _jquery2.default)(self.issue_el).text(res.issue);
+	        self.countdown(res.end_time, function (time) {
+	          (0, _jquery2.default)(self.countdown_el).html(time);
+	        }, function () {
+	          setTimeout(function () {
+	            self.updateState();
+	            self.getOmit(self.issue).then(function (res) {});
+	            self.getOpenCode(self.issue).then(function (res) {});
+	          }, 500);
+	        });
 	      });
 	    }
+
+	    /**
+	     * [initEvent 初始化事件]
+	     * @return {[type]} [description]
+	     */
+
 	  }, {
 	    key: 'initEvent',
-	    value: function initEvent() {}
+	    value: function initEvent() {
+	      var self = this;
+	      (0, _jquery2.default)('#plays').on('click', 'li', self.changePlayNav.bind(self));
+	      (0, _jquery2.default)('.boll-list').on('click', '.btn-boll', self.toggleCodeActive.bind(self));
+	      (0, _jquery2.default)('#confirm_sel_code').on('click', self.addCode.bind(self));
+	      (0, _jquery2.default)('.dxjo').on('click', 'li', self.assistHandle.bind(self));
+	      (0, _jquery2.default)('.qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
+	    }
 	  }]);
 
 	  return Lottery;
 	}(mix(_base2.default, _calculate2.default, _interface2.default, _timer2.default));
+
+	exports.default = Lottery;
 
 /***/ }),
 /* 335 */

@@ -1,4 +1,63 @@
-import './lottery/base';
-import './lottery/timer';
-import './lottery/calculate';
-import './lottery/interface';
+import 'babel-polyfill';
+import Base from './lottery/base';
+import Timer from './lottery/timer';
+import Calculate from './lottery/calculate';
+import Interface from './lottery/interface';
+import $ from 'jquery';
+
+const copyProperties = function (target, source) {
+  for (let key of Reflect.ownKeys(source)) {
+    if (key !== 'constructor' && key !== 'prototype' && key !== 'name') {
+      let desc = Object.getOwnPropertyDescriptor(source, key);
+      Object.defineProperty(target, key, desc);
+    }
+  }
+}
+
+const mix = function (...mixins) {
+  class Mix {}
+  for (let mixin of mixins) {
+    copyProperties(Mix, mixin);
+    copyProperties(Mix.prototype, mixin.prototype);
+  }
+  return Mix;
+}
+
+class Lottery extends mix(Base, Calculate, Interface, Timer) {
+  constructor(name = 'syy', cname = '11选5', issue = '**', state = '') {
+    super();
+    this.name = name;
+    this.cname = cname;
+    this.issue = issue;
+    this.state = state;
+    this.el = '';
+    this.omit = new Map();
+    this.open_code = new Set();
+    this.open_code_list = new Set();
+    this.play_list = new Map();
+    this.number = new Set();
+    this.issue_el = '#curr_issue';
+    this.countdown_el = '#countdown';
+    this.state_el = '.state_el';
+    this.cart_el = '.codelist';
+    this.omit_el = '';
+    this.cur_play = 'r5';
+    this.initPlayLiist();
+    this.initNumber();
+    this.updateState();
+    this.initEvent();
+  }
+
+  updateState() {
+    let self = this;
+    this.getState().then(function(res) {
+      self.issue = res.issue;
+      self.end_timer = res.end_timer;
+      self.state = res.states;
+    })
+  }
+
+  initEvent() {
+
+  }
+}

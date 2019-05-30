@@ -61,6 +61,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var syy = new _lottery2.default();
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -20349,7 +20351,7 @@
 	    value: function countdown(end, update, handle) {
 	      var now = new Date().getTime();
 	      var self = this;
-	      if (now - end) {
+	      if (now - end > 0) {
 	        handle.call(self);
 	      } else {
 	        var last_time = end - now;
@@ -20375,7 +20377,7 @@
 	          r.push('<em>' + s + '</em>\u79D2');
 	        }
 	        self.last_time = r.join('');
-	        update.call(self.r.join(''));
+	        update.call(self, r.join(''));
 	        setTimeout(function () {
 	          self.countdown(end, update, handle);
 	        }, 1000);
@@ -20421,7 +20423,7 @@
 	      var exist = this.play_list.has(play_name);
 	      var arr = new Array(active).fill('0');
 	      if (exist && play_name.at(0) === 'r') {
-	        count = Calculate.combine(arr, play_name.split('')[1]);
+	        count = Calculate.combine(arr, play_name.split('')[1]).length;
 	      }
 	      return count;
 	    }
@@ -20510,6 +20512,7 @@
 	          }
 	        }
 	      })(arr, size, []);
+	      return allResult;
 	    }
 	  }]);
 

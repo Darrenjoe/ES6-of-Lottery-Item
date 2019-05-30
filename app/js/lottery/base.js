@@ -228,13 +228,13 @@ class Base {
    * [getTotal 计算所有金额]
    * @return {[type]} [description]
    */
-  getTotal(){
-    let count=0;
-    $('.codelist li').each(function(index,item){
-      count+=$(item).attr('count')*1;
+  getTotal() {
+    let count = 0;
+    $('.codelist li').each(function (index, item) {
+      count += $(item).attr('count') * 1;
     })
     $('#count').text(count);
-    $('#money').text(count*2);
+    $('#money').text(count * 2);
   }
 
   /**
@@ -242,13 +242,13 @@ class Base {
    * @param  {[type]} num [description]
    * @return {[type]}     [description]
    */
-  getRandom(num){
-    let arr=[],index;
-    let number=Array.from(this.number);
-    while(num--){
-      index=Number.parseInt(Math.random()*number.length);
+  getRandom(num) {
+    let arr = [], index;
+    let number = Array.from(this.number);
+    while (num--) {
+      index = Number.parseInt(Math.random() * number.length);
       arr.push(number[index]);
-      number.splice(index,1);
+      number.splice(index, 1);
     }
     return arr.join(' ')
   }
@@ -258,16 +258,16 @@ class Base {
    * @param  {[type]} e [description]
    * @return {[type]}   [description]
    */
-  getRandomCode(e){
+  getRandomCode(e) {
     e.preventDefault();
-    let num=e.currentTarget.getAttribute('count');
-    let play=this.cur_play.match(/\d+/g)[0];
-    let self=this;
-    if(num==='0'){
+    let num = e.currentTarget.getAttribute('count');
+    let play = this.cur_play.match(/\d+/g)[0];
+    let self = this;
+    if (num === '0') {
       $(self.cart_el).html('')
-    }else{
-      for(let i=0;i<num;i++){
-        self.addCodeItem(self.getRandom(play),self.cur_play,self.play_list.get(self.cur_play).name,1);
+    } else {
+      for (let i = 0; i < num; i++) {
+        self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);
       }
     }
   }

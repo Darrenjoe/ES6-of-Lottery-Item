@@ -77,7 +77,7 @@ class Calculate {
       if (size === arrLen) {
         allResult.push([].concat(result, arr))
       } else {
-        for (let i = 0; i < allLen; i++) {
+        for (let i = 0; i < arrLen; i++) {
           let newResult = [].concat(result);
           newResult.push(arr[i]);
           if (size === 1) {

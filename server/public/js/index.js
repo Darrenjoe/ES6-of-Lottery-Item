@@ -20499,7 +20499,7 @@
 	        if (size === arrLen) {
 	          allResult.push([].concat(result, arr));
 	        } else {
-	          for (var i = 0; i < allLen; i++) {
+	          for (var i = 0; i < arrLen; i++) {
 	            var newResult = [].concat(result);
 	            newResult.push(arr[i]);
 	            if (size === 1) {
